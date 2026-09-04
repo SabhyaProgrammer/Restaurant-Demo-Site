@@ -1,7 +1,14 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+
+// Loading fallback for lazy loaded components
+const PageLoader = () => (
+    <div className="flex items-center justify-center min-h-[50vh]">
+        <div className="w-12 h-12 border-4 border-brand-900 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+);
 
 /**
  * App — root layout component. Renders Navbar, page content (via Outlet), and Footer.
@@ -19,7 +26,9 @@ export default function App() {
         <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-1">
-                <Outlet />
+                <Suspense fallback={<PageLoader />}>
+                    <Outlet />
+                </Suspense>
             </main>
             <Footer />
         </div>

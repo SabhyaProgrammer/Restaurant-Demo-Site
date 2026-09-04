@@ -1,10 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { lazy } from 'react';
 import App from './App';
-import Home from './pages/Home';
-import MenuPage from './pages/Menu';
-import Reservations from './pages/Reservations';
-import Gallery from './pages/Gallery';
-import AboutContact from './pages/AboutContact';
+
+// Lazy loading route components for code splitting which improves initial load times
+const Home = lazy(() => import('./pages/Home'));
+const MenuPage = lazy(() => import('./pages/Menu'));
+const Reservations = lazy(() => import('./pages/Reservations'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const AboutContact = lazy(() => import('./pages/AboutContact'));
 
 /**
  * React Router configuration for the site.
