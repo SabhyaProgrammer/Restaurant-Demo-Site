@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-surface-50 text-surface-800 font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif text-brand-900;
+  }
+}
+
+@layer components {
+
+  /* Common reusable utility classes matching DESIGN_SYSTEM.md */
+  .btn-primary {
+    @apply bg-brand-900 text-surface-50 hover:bg-brand-500 transition-colors px-6 py-3 rounded-md font-sans tracking-wide inline-flex items-center justify-center cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-brand-900 text-brand-900 hover:bg-brand-100 transition-colors px-6 py-3 rounded-md font-sans tracking-wide inline-flex items-center justify-center cursor-pointer;
+  }
+
+  .btn-accent {
+    @apply bg-accent-500 text-surface-50 hover:bg-accent-600 transition-colors px-6 py-3 rounded-md font-sans tracking-wide inline-flex items-center justify-center cursor-pointer;
+  }
+
+  .card {
+    @apply bg-surface-50 border border-surface-100 shadow-soft rounded-lg overflow-hidden;
+  }
+}
+
+/* Marquee animation for the Home page photo strip */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbar for category tabs horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
